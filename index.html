@@ -9,26 +9,33 @@
       margin: 0;
       height: 100%;
       overflow: hidden;
-      background: #0f0f1a;
-      /* extend background into notch area */
-      padding: env(safe-area-inset-top) env(safe-area-inset-right)
-               env(safe-area-inset-bottom) env(safe-area-inset-left);
+    }
+
+    /* A container that fills edge-to-edge (including notch area) */
+    #blob-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #0f0f1a; /* fallback dark base */
+      overflow: hidden;
     }
 
     .blob {
       position: absolute;
-      width: 600px;
-      height: 600px;
+      width: 700px;
+      height: 700px;
       border-radius: 50%;
-      filter: blur(180px);
+      filter: blur(200px);
       opacity: 0.7;
-      animation: moveBlobs 20s ease-in-out infinite alternate;
+      animation: moveBlobs 25s ease-in-out infinite alternate;
     }
 
     .blob:nth-child(1) {
       background: #9333ea; /* purple */
-      top: -150px;
-      left: -150px;
+      top: -200px;
+      left: -200px;
       animation-delay: 0s;
     }
 
@@ -36,26 +43,28 @@
       background: #ec4899; /* pink */
       top: 150px;
       left: 400px;
-      animation-delay: 5s;
+      animation-delay: 6s;
     }
 
     .blob:nth-child(3) {
       background: #f43f5e; /* red */
       top: 400px;
-      left: -200px;
-      animation-delay: 10s;
+      left: -250px;
+      animation-delay: 12s;
     }
 
     @keyframes moveBlobs {
       0%   { transform: translate(0, 0) scale(1); }
-      50%  { transform: translate(200px, -150px) scale(1.2); }
-      100% { transform: translate(-150px, 200px) scale(0.9); }
+      50%  { transform: translate(250px, -180px) scale(1.2); }
+      100% { transform: translate(-180px, 220px) scale(0.9); }
     }
   </style>
 </head>
 <body>
-  <div class="blob"></div>
-  <div class="blob"></div>
-  <div class="blob"></div>
+  <div id="blob-container">
+    <div class="blob"></div>
+    <div class="blob"></div>
+    <div class="blob"></div>
+  </div>
 </body>
 </html>
